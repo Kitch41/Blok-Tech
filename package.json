@@ -1,0 +1,20 @@
+{
+  "name": "Blok-Tech",
+  "version": "1.0.0",
+  "description": "<h1>Blok-Tech</h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kitch41/Blok-Tech.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kitch41/Blok-Tech/issues"
+  },
+  "homepage": "https://github.com/Kitch41/Blok-Tech#readme",
+  "keywords": []
+}
