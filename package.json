@@ -16,5 +16,8 @@
     "url": "https://github.com/Kitch41/Blok-Tech/issues"
   },
   "homepage": "https://github.com/Kitch41/Blok-Tech#readme",
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
