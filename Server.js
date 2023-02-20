@@ -1,4 +1,3 @@
-import chalk from 'chalk';
 
 const log = console.log;
 
@@ -6,15 +5,19 @@ const express = require('express');
 const PORT = process.env.PORT || 1337;
 const app = express();
 
-console.log(chalk.blue('Hello world!'));
 
-log(chalk.blue('Hello') + ' World' + chalk.red('!'));
-
-const error = chalk.bold.red;
-const warning = chalk.hex('#FFA500');
-
-app.get('/', onHome).listen(1337);
+app.get('/', onHome).listen(PORT);
 
 function onHome(req, res) {
     res.send('hallo')
 };
+
+
+app.get('/user', onUser).listen(PORT);
+
+function onUser(req, res) {
+    res.send('hallo user')
+};
+
+
+app.listen(PORT);
