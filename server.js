@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 
-const log = console.log;
+const { log } = console;
 
 const express = require('express');
 const PORT = process.env.PORT || 1337;
