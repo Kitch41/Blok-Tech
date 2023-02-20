@@ -1,6 +1,6 @@
 
-<h1>Blok-Tech</h1>
+<h1>Game Buddy</h1>
 
-Main Github voor Blok tech van Stef Keuken in Tech1<br>
+* Description
 
-In deze repo staan alle files van zowel project tech, als frontend en backend.
+*
