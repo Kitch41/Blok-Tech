@@ -1,26 +1,48 @@
 
-const log = console.log;
+const express = require('express')
+let ejs = require('ejs');
+const app = express()
+const port = 1337
 
-const express = require('express');
-const PORT = process.env.PORT || 1337;
-const app = express();
-
+app.set('view engine', 'ejs');
 
 //Home Get
 
-app.get('/', onHome).listen(PORT);
+app.get('/', onHome)
 
 function onHome(req, res) {
-    res.send('hallo')
+  res.render('index.ejs');
 };
 
 //User Get
 
-app.get('/user', onUser).listen(PORT);
+app.get('/user', onUser)
 
 function onUser(req, res) {
     res.send('hallo user')
 };
 
+//profile get
 
-app.listen(PORT);
+app.get('/user', onProfile)
+
+function onProfile(req, res) {
+    res.send('hallo profile')
+};
+
+app.get('/user', onProfile)
+
+function onProfile(req, res) {
+    res.send('hallo profile')
+};
+
+app.get('*', onError)
+
+function onError(req, res) {
+  res.send("error 404, page not found")
+}
+
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+});
