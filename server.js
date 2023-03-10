@@ -6,6 +6,8 @@ const port = 1337
 
 app.set('view engine', 'ejs');
 
+app.use(express.static('static'));
+
 //Home Get
 
 app.get('/', (req, res) => {
@@ -19,11 +21,8 @@ app.get('/user', (req, res) => {
   res.send('hallo user')
 })
 
-//profile get
+//profile edit get
 
-app.get('/user', (req, res) => {
-  res.send('hallo profile')
-})
 
 app.get('*', (req, res) => {
   res.send("error 404, page not found")
@@ -32,6 +31,7 @@ app.get('*', (req, res) => {
 
 app.get('/edit', (req, res) => {
   res.render('edit.ejs')
+  res.send("editting")
 })
 
 

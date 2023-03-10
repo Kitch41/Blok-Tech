@@ -1,8 +1,23 @@
 
+
+:root {
+  --clr-mainbluedark: #161525;
+  --clr-mainbluelighter: #222131;
+  --clr-mainbutton: #f9b321;
+}
+
+
 * {
     margin: 0;
     padding: 0;
 }
+
+body {
+  background-image: url(./images/Background-pattern-blue.jpg);
+  background-size: cover;
+}
+
+
 
 /* Navbar */
 
@@ -13,7 +28,7 @@ nav{
   }
   nav ul{
     list-style-type: none;
-    background: lightgrey;
+    background: var(--clr-mainbluedark);
     font-family: courier;
     width: 100%;
     height: 100dvh;
@@ -33,10 +48,28 @@ nav{
     align-items: center;
   }
 
-  .explore a, .mygames a, .mybuddys a {
-    background-color: grey;
+  .explore a, .mygames a, .mybuddys a, .home a{
+    display: flex;
+    background-color: var(--clr-mainbutton);
     border-radius: 20px;
+    flex-direction: column;
   }
+
+  .explore, .mygames, .mybuddys{
+    display: flex;
+    flex-direction: column;
+  }
+
+.explore h1, .mygames h1, .mybuddys h1 {
+  color: var(--clr-mainbutton);
+  margin-top: 4%;
+}
+
+.explore img, .mygames img, .mybuddys img, .home img {
+  height: 3em;
+  width: auto;
+}
+
 
 
   
@@ -73,4 +106,58 @@ nav{
   .wrapper {
     display: flex;
     flex-direction: row;
+  }
+
+
+
+  /*  Profile page */
+
+  section>section>img {
+    height: 10em;
+    width: auto;
+    border-radius: 100%;
+    max-width: 10em;
+
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1em;
+  }
+
+  section>section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    
+  }
+
+  section>section a img {
+    height: 3em;
+    width: auto;
+    display: flex;
+  }
+
+  section>section a {
+    align-self: end;
+    margin: 1em 1em 0 0;
+
+  }
+
+/* name and name tags */
+
+  section>section h1{
+    color: white;
+    margin-top: 1em;
+  }
+
+
+  section>section h1, section>section h2 {
+    color: white;
+  }
+  
+  /* section below name tags */
+
+  section>section>section {
+
   }
