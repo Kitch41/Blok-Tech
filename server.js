@@ -27,13 +27,13 @@ async function run() {
     await client.connect();
 
     // database and collection code goes here
-    const db = client.db("Users")
-    const coll = db.collection("User1")
+    const db = client.db("User1")
+    const datacoll = db.collection("Data")
 
 
 
     // find code goes here
-    const result = coll.find()
+    const result = datacoll.find()
 
 
 
