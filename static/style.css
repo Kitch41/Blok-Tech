@@ -4,6 +4,8 @@
   --clr-mainbluedark: #161525;
   --clr-mainbluelighter: #222131;
   --clr-mainbutton: #f9b321;
+  --clr-whitetext:#FFFFFF;
+  --clr-blacktext: #000000;
 }
 
 
@@ -25,7 +27,10 @@ nav{
     height: 100dvh;
     width: 9em;
     min-width: 9em;
+    position: fixed;
+    left:1;
   }
+
   nav ul{
     list-style-type: none;
     background: var(--clr-mainbluedark);
@@ -71,11 +76,9 @@ nav{
 }
 
 
-
-  
   nav ul li a{
     text-decoration: none;
-    color: black;
+    color: var(--clr-blacktext);
     font-size: 1.2em;
     font-weight:bold;
     padding: 0.5em;
@@ -96,10 +99,9 @@ nav{
     margin-top: 2em;
   }
 
-  
-  .active{
-    background: grey;
-  }
+
+
+  /*------------ Common -------------*/
 
   /* section body wrapper */
 
@@ -109,10 +111,30 @@ nav{
   }
 
 
+/* main website section */
 
-  /*  Profile page */
+  body>section>section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-left: 9em;
+  }
 
-  section>section>img {
+  body>section>section>h1 {
+    color: #f9b321;
+    font-size: 2em;;
+
+
+
+    background-color: var(--clr-mainbluedark);
+    padding: 1em 13em;
+    border-radius: 0 0 0.5em 0.5em;
+  }
+
+  /*------------ index Page -------------*/
+
+  .index>section>section>img {
     height: 10em;
     width: auto;
     border-radius: 100%;
@@ -124,40 +146,269 @@ nav{
     margin-top: 1em;
   }
 
-  section>section {
+  /* Image, Username, tag and edit button */
+
+  .index>section>section>section:nth-of-type(1) {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    align-items: center;
-    
+    margin: 0;
+    position: relative;
   }
 
-  section>section a img {
-    height: 3em;
+  .index>section>section>section:nth-of-type(1) img{
+    height: 10em;
     width: auto;
+    border-radius: 100%;
+    max-width: 10em;
+
+    align-self: center;
     display: flex;
-  }
-
-  section>section a {
-    align-self: end;
-    margin: 1em 1em 0 0;
-
-  }
-
-/* name and name tags */
-
-  section>section h1{
-    color: white;
+    flex-direction: column;
     margin-top: 1em;
   }
 
+  .index>section>section>section:nth-of-type(1) h1{
+    display: flex;
+    justify-content: center;
+    margin: 0;
 
-  section>section h1, section>section h2 {
-    color: white;
+    margin-top: 1em;
+
+    color: var(--clr-mainbutton);
+    font-size: 1.8em;
   }
+
+  .index>section>section>section:nth-of-type(1) p{
+    display: flex;
+    justify-content: center;
+    margin: 0;
+
+    color: var(--clr-mainbutton);
+  }
+
+  .index>section>section>section:nth-of-type(1) a img{
+    position: fixed;
+    top: 0;
+    right: 13em ;
+    height: 3em;
+    margin:2em 2em 0 0;
+
+    filter: invert(86%) sepia(26%) saturate(3552%) hue-rotate(340deg) brightness(99%) contrast(97%);
+  }
+
+  .index>section>section>section:nth-of-type(1) a img:hover{
+    filter: invert(100%) sepia(97%) saturate(18%) hue-rotate(325deg) brightness(103%) contrast(100%);
+  }
+
+  /* Overview, Info, Games */
+
+  .index>section>section>section:nth-of-type(2) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 2em 0 0 0;
+    height: 20em;
+    background-color: var(--clr-mainbluedark);
+    border-radius: 1em;
+    width: 60em;
+  }
+
+  .index>section>section>section:nth-of-type(2)>ul {
+    display: flex;
+    flex-direction: row;
+    gap: 6em;
+    margin-top: 1.5em;
+  }
+
+  .index>section>section>section:nth-of-type(2)>ul>li {
+    list-style: none;
+  }
+
+  .index>section>section>section:nth-of-type(2)>ul>li>a {
+    text-decoration: none;
+    color: var(--clr-mainbutton);
+    font-size: 1.2em;
+    font-weight: bold;
+
+    background-color: var(--clr-mainbluelighter);
+    border-radius: 10em;
+    padding: 0.5em 2em;
+  }
+
+  .index>section>section>section:nth-of-type(2)>ul>li>a:hover {
+    color: var(--clr-whitetext);
+    background-color: var(--clr-mainbutton);
+  }
+
+  /* divider line */
+
+  .index>section>section>section:nth-of-type(2)>hr {
+    border-top: 2px solid var(--clr-mainbutton);
+    border-bottom: none;
+    width: 100%;
+    margin-top: 2em;
+  }
+
+  .index>section>section>section:nth-of-type(2)>h2 {
+    color: var(--clr-mainbutton);
+    margin: 2em 0 0 0;
+  }
+
+  .index>section>section>section:nth-of-type(2)>p {
+    color: var(--clr-mainbutton);
+    margin: 0 0 0 0;
+  }
+
+  .index>section>section>section:nth-of-type(2)>progress{
+    width: 80%;
+    margin-top: 1em;
+    border-radius: 10em;
+
+  }
+
+  .index progress::-webkit-progress-value {
+    background: var(--clr-mainbutton);
+    border-radius: 25em;
+}
+
+.index progress::-webkit-progress-bar {
+  background: var(--clr-mainbluelighter);
+  border-radius: 25em;
+}
+
+/*------------ edit Page -------------*/
+
+.edit {
+background-color: var(--clr-mainbluelighter);
+background-image: none;
   
-  /* section below name tags */
+}
 
-  section>section>section {
 
-  }
+.edit section>section>img:nth-of-type(1) {
+  height: 10em;
+  width: auto;
+  border-radius: 100%;
+  max-width: 10em;
+
+  position: absolute;
+  top: 8em;
+  right: 15em;
+
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit section>section>img:nth-of-type(2) {
+  position: absolute;
+  right: 15em;
+  top: 16em;
+
+  background-color: grey;
+  border-radius: 10em;
+  padding: 0.25em;
+
+  height: 2em;
+
+  filter: invert(100%) sepia(97%) saturate(18%) hue-rotate(325deg) brightness(103%) contrast(100%);
+}
+
+
+/* ---------------Form---------------- */
+
+.edit section>section>form {
+  align-self: flex-start;
+  margin: 2em 0 0 11em;
+  column-gap: 1em ;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+
+/* first label + input username */
+
+
+.edit section>section>form>label {
+  color: var(--clr-mainbutton);
+  font-size: 1.2em;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.edit section>section>form>label>input {
+  background-color: var(--clr-mainbluelighter);
+  border: none;
+  border-bottom: 0.1px solid var(--clr-mainbutton);
+
+  height: 2em;
+  width: 20em;
+
+  color: var(--clr-whitetext);
+}
+
+.edit section>section>form>label>input:focus {
+  background-color: var(--clr-mainbluedark);
+}
+
+/* force next line */
+
+.edit section>section>form>label:nth-of-type(2)>input,
+.edit section>section>form>label:nth-of-type(4)>input  {
+  margin-right: 45em;
+}
+
+.edit section>section>form>label:nth-of-type(6)>input {
+  margin-right: 60em;
+}
+
+
+/* small input */
+
+.edit section>section>form>label:nth-of-type(2)>input,
+.edit section>section>form>label:nth-of-type(6)>input {
+  background-color: var(--clr-mainbluelighter);
+  border: none;
+  border-bottom: 0.1px solid var(--clr-mainbutton);
+
+  height: 2em;
+  width: 5em;
+
+  color: var(--clr-whitetext);
+}
+
+/* Gender */
+
+.edit section>section>form>label:nth-of-type(7) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em; 
+}
+
+
+/* Save button */
+
+.edit section>section>form>input {
+  border-radius: 10em;
+  padding: 1.5em;
+  border: none;
+
+  background-color: var(--clr-mainbluedark);
+  color: var(--clr-mainbutton);
+
+  position: fixed;
+  bottom: 3em;
+  right: 5em; 
+}
+
+.edit section>section>form>input:hover {
+  background-color: var(--clr-mainbutton);
+  color: var(--clr-whitetext);
+
+
+}
+

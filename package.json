@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Kitch41/Blok-Tech#readme",
   "keywords": [],
   "dependencies": {
+    "body-parser": "^1.20.2",
     "chalk": "^5.2.0",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",

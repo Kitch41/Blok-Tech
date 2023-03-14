@@ -3,6 +3,7 @@ const express = require('express')
 let ejs = require('ejs');
 const mongoose = require('mongoose');
 require('dotenv').config();
+var bodyParser = require('body-parser');
 
 const app = express()
 const port = 1337
@@ -11,6 +12,9 @@ const port = 1337
 app.set('view engine', 'ejs');
 
 app.use(express.static('static'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 
@@ -41,6 +45,10 @@ async function run() {
     await result.forEach(console.log);
 
 
+    // insert code here
+
+    
+
 
   } finally {
     await client.close();
@@ -58,27 +66,42 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 })
 
-
-//User Get
-
-app.get('/user', (req, res) => {
-  res.send('hallo user');
-})
-
 //profile edit get
-
-
-app.get('*', (req, res) => {
-  res.send("error 404, page not found");
-})
-
 
 app.get('/edit', (req, res) => {
   res.render('edit.ejs');
 })
 
 
-// submitting new info
+
+// -----------------------------trial and error -----------------------------//
+
+
+app.post('/add-data', (req, res) => {
+  const profiledata = [{
+    _id: 1,
+    username: "Kitch", 
+    tag: 3434, 
+    firstname: "stef", 
+    lastname: "Keuken", 
+    email: "stefkeuken@hotmail.com", 
+    age: 20
+  }]
+
+  const resultdata = client.db("User1").collection("Data").insertMany(profiledata);
+  console.log(resultdata.insertedIds);
+  console.log(profiledata);
+
+
+  res.send ("succes")
+})
+
+//404 send
+
+app.get('*', (req, res) => {
+  res.send("error 404, page not found");
+})
+
 
 
 // listener

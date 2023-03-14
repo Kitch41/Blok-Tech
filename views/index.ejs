@@ -12,33 +12,48 @@
 </head>
 
 
-<body>
+<body class="index">
+
   <section class="wrapper">
-    <%- include('./partials/nav.ejs'); %>
+      <%- include('./partials/nav.ejs'); %> 
 
-    <section>
-      <a href="/edit"><img src="./icons/Edit-icon.svg"></a>>
-      <img src="./images/placeholder-photo.jpg" alt="placeholder">
-      <!-- Username -->
-      <h1>
-        Kitch
-      </h1>
-      <!-- Tag -->
-      <h2>
-        Kitch#4343
-      </h2>
-
+      <!--main website section-->
       <section>
-        <h1>hello</h1>
+        <h1>My Profile</h1>
+
+        <!--image, username, tag and edit button-->
+        <section>
+          <img src="./images/placeholder-photo.jpg">
+          <h1>Kitch</h1>
+          <p>Kitch#3434</p>
+          <a href="/edit"><img src="./icons/Edit-icon.svg"></a>
+        </section>
+
+        <!--Overview, Info, Games-->
+        <section>
+          <ul>
+            <li>
+              <a href="#">Overview</a>
+            </li>
+            <li>
+              <a href="#">Info</a>
+            </li>
+            <li>
+              <a href="#">Games</a>
+            </li>
+          </ul>
+
+          <hr/>
+
+          <h2>Level: 12</h2>
+          <p>Novice</p>
+          <progress max="100" value="50"></progress>
+          
+
+        </section>
       </section>
-
-    </section>
-
   </section>
 
-<footer>
-
-</footer>
 
 </body>
 </html>
