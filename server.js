@@ -5,6 +5,10 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 var bodyParser = require('body-parser');
 
+
+
+
+
 const app = express()
 const port = 1337
 
@@ -15,6 +19,7 @@ app.use(express.static('static'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 
 
@@ -74,27 +79,58 @@ app.get('/edit', (req, res) => {
 
 
 
-// -----------------------------trial and error -----------------------------//
+// -----------------------------trial and error (mostly error) -----------------------------//
 
 
-app.post('/add-data', (req, res) => {
-  const profiledata = [{
-    _id: 1,
-    username: "Kitch", 
-    tag: 3434, 
-    firstname: "stef", 
-    lastname: "Keuken", 
-    email: "stefkeuken@hotmail.com", 
-    age: 20
-  }]
+app.post('/add-data', async (req, res) => {
 
-  const resultdata = client.db("User1").collection("Data").insertMany(profiledata);
-  console.log(resultdata.insertedIds);
-  console.log(profiledata);
+  const formdata = req.body
+  const username = req.body.username
+  const tag = req.body.tag
+  const firstname = req.body.firstname
+  const lastname = req.body.lastname
+  const email = req.body.email
+  const age = req.body.age
+  const collection = client.db("User1").collection('Data');
 
 
-  res.send ("succes")
-})
+
+  res.render('info.ejs',  formdata  )
+
+  await collection.insertOne(            
+    {
+      username: username,                
+      tag: tag,                
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      age: age,
+    })            
+    
+    console.log('Account aangemaakt door', username );
+
+
+  
+});
+
+//   const profiledata = [{
+//     _id: 1,
+//     username: "Kitch", 
+//     tag: 3434, 
+//     firstname: "Stef", 
+//     lastname: "Keuken", 
+//     email: "stefkeuken@hotmail.com", 
+//     age: 20
+//   }]
+
+//   const resultdata = client.db("User1").collection("Data").insertMany(profiledata);
+//   console.log(resultdata.insertedIds);
+//   console.log(profiledata);
+
+  
+
+//   res.send ("succes")
+// })
 
 //404 send
 
