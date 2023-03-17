@@ -26,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 // mongo DB connect
 
 const { MongoClient } = require("mongodb");
+const { update } = require('lodash');
 
 const uri = process.env.DB_STRING;
 
@@ -56,7 +57,7 @@ async function run() {
 
 
   } finally {
-    await client.close();
+    // await client.close();
   }
 }
 run().catch(console.dir);
@@ -67,8 +68,11 @@ run().catch(console.dir);
 
 //Home Get
 
-app.get('/', (req, res) => {
-  res.render('index.ejs');
+app.get('/', async (req, res) => {
+
+  console.log ("homepage opened")
+  res.render('index.ejs', formdata);
+  
 })
 
 //profile edit get
@@ -95,9 +99,10 @@ app.post('/add-data', async (req, res) => {
 
 
 
-  res.render('info.ejs',  formdata  )
+  
 
-  await collection.insertOne(            
+    await collection.replaceOne( 
+      { _id: "1" },          
     {
       username: username,                
       tag: tag,                
@@ -107,8 +112,9 @@ app.post('/add-data', async (req, res) => {
       age: age,
     })            
     
-    console.log('Account aangemaakt door', username );
+    console.log('Account aangemaakt voor', username );
 
+    res.render('index.ejs',  formdata )
 
   
 });
