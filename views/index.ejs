@@ -24,8 +24,8 @@
         <!--image, username, tag and edit button-->
         <section>
           <img src="./images/placeholder-photo.jpg">
-          <h1><%- username %></h1>
-          <p><%- username %>#<%= tag %></p>
+          <h1><%= datacollected[0].username %></h1>
+          <p><%= datacollected[0].username %>#<%= datacollected[0].tag %></p>
           <a href="/edit"><img src="./icons/Edit-icon.svg"></a>
         </section>
 
