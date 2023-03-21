@@ -37,7 +37,7 @@ const coll = db.collection("Data")
 
 
 
-// failed experiment V
+// failed experiment V-------------------------------
 
 // async function run() {
 //   try {
@@ -70,7 +70,6 @@ const coll = db.collection("Data")
 
 
 
-
 //Home Get
 
 app.get('/', async (req, res) => {
@@ -78,6 +77,19 @@ app.get('/', async (req, res) => {
     const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     const db = client.db("User1")
     const coll = db.collection("Data")
+
+//-----in case of error-----
+
+    // coll.insertOne({
+    //   _id: '1',
+    //   username: 'Kitch',
+    //   tag: '3434',
+    //   firstname: 'Stef',
+    //   lastname: 'Keuken',
+    //   email: 'stefkeuken@hotmail.com',
+    //   age:'20'
+    // }
+    // );
 
 
     const datacollected = await coll.find({}).limit(1).toArray()
