@@ -1,8 +1,6 @@
 const express = require("express");
-let ejs = require("ejs");
-const mongoose = require("mongoose");
+ejs = require("ejs");
 require("dotenv").config();
-var bodyParser = require("body-parser");
 
 const app = express();
 const port = 1337;
@@ -11,14 +9,11 @@ app.set("view engine", "ejs");
 
 app.use(express.static("static"));
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
 // mongo DB connect
 
 const { MongoClient } = require("mongodb");
-const { update, result } = require("lodash");
 
 const uri = process.env.DB_STRING;
 
@@ -26,9 +21,6 @@ const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
-const db = client.db("User1");
-const coll = db.collection("Data");
 
 // failed experiment V-------------------------------
 
@@ -112,7 +104,6 @@ app.get("/edit", (req, res) => {
 app.post("/add-data", async (req, res) => {
   console.log("running postroute");
 
-  const formdata = req.body;
   const username = req.body.username;
   const tag = req.body.tag;
   const firstname = req.body.firstname;
