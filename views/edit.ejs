@@ -1,74 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile</title>
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+    <script src="index.js"></script>
+  </head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit Profile</title>
-  <link href="./style.css" rel="stylesheet" type="text/css">
-  <script src="index.js"></script>
-
-</head>
-
-
-<body class="edit">
-
-  <section class="wrapper">
-      <%- include('./partials/nav.ejs'); %> 
+  <body class="edit">
+    <section class="wrapper">
+      <%- include('./partials/nav.ejs'); %>
 
       <!--main website section-->
       <section>
         <h1>Edit Your Profile</h1>
 
-        <img src="./images/placeholder-photo.jpg">
-        <img src="./icons/Edit-icon.svg">
+        <img src="./images/placeholder-photo.jpg" />
+        <img src="./icons/Edit-icon.svg" />
 
         <form name="editprofileform" method="POST" action="/add-data">
-
           <label for="Username">
             Username
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" />
           </label>
 
           <label for="Tag">
             Tag
-            <input type="number" id="tag" name="tag" max="9999" value="#">
+            <input type="number" id="tag" name="tag" max="9999" value="#" />
           </label>
-          <br>
+          <br />
 
           <label for="Firstname">
             Firstname
-            <input type="text" id="firstname" name="firstname">
+            <input type="text" id="firstname" name="firstname" />
           </label>
 
           <label for="lastname">
             Lastname
-            <input type="text" id="lastname" name="lastname">
+            <input type="text" id="lastname" name="lastname" />
           </label>
 
           <label for="email">
             E-mail
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" />
           </label>
 
           <label for="age">
             Age
-            <input type="number" id="age" name="age" max="120">
+            <input type="number" id="age" name="age" max="120" />
           </label>
 
-         
-
-          
-      
-          <input type="submit" value="Save Profile Settings">
-      </form>
-
-
+          <input type="submit" value="Save Profile Settings" />
+        </form>
       </section>
-        
-  </section>
-
-
-</body>
+    </section>
+  </body>
 </html>

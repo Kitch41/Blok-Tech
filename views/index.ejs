@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile</title>
+    <link href="./style.css" rel="stylesheet" type="text/css" />
+    <script src="index.js"></script>
+  </head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Profile</title>
-  <link href="./style.css" rel="stylesheet" type="text/css">
-  <script src="index.js"></script>
-
-</head>
-
-
-<body class="index">
-
-  <section class="wrapper">
-      <%- include('./partials/nav.ejs'); %> 
+  <body class="index">
+    <section class="wrapper">
+      <%- include('./partials/nav.ejs'); %>
 
       <!--main website section-->
       <section>
@@ -23,10 +19,10 @@
 
         <!--image, username, tag and edit button-->
         <section>
-          <img src="./images/placeholder-photo.jpg">
+          <img src="./images/placeholder-photo.jpg" />
           <h1><%= datacollected[0].username %></h1>
           <p><%= datacollected[0].username %>#<%= datacollected[0].tag %></p>
-          <a href="/edit"><img src="./icons/Edit-icon.svg"></a>
+          <a href="/edit"><img src="./icons/Edit-icon.svg" /></a>
         </section>
 
         <!--Overview, Info, Games-->
@@ -43,20 +39,13 @@
             </li>
           </ul>
 
-          <hr/>
+          <hr />
 
           <h2>Level: 12</h2>
           <p>Novice</p>
           <progress max="100" value="50"></progress>
-          
-
         </section>
       </section>
-  </section>
-
-
-</body>
+    </section>
+  </body>
 </html>
-
-
-
