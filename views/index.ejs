@@ -22,7 +22,7 @@
           <img src="./images/placeholder-photo.jpg" />
           <h1><%= datacollected[0].username %></h1>
           <p><%= datacollected[0].username %>#<%= datacollected[0].tag %></p>
-          <a href="/edit"><img src="./icons/Edit-icon.svg" /></a>
+          <a href="/edit/<%= datacollected[0].username %>"><img src="./icons/Edit-icon.svg" /></a>
         </section>
 
         <!--Overview, Info, Games-->
@@ -41,9 +41,12 @@
 
           <hr />
 
+          <h2 id="steamusername">Steam Username: Not Connected</h2>
           <h2>Level: 12</h2>
           <p>Novice</p>
           <progress max="100" value="50"></progress>
+
+
         </section>
       </section>
     </section>

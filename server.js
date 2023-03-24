@@ -95,8 +95,10 @@ app.on("close", () => {
 
 //profile edit get
 
-app.get("/edit", (req, res) => {
-  res.render("edit.ejs");
+app.get("/edit/:username", async (req, res) => {
+
+    res.render("edit.ejs")
+
 });
 
 // -----------------------------trial and error (mostly error) -----------------------------//
@@ -126,7 +128,6 @@ app.post("/add-data", async (req, res) => {
 
   console.log("Account aangemaakt voor", username);
 
-  // niet render naar index maar route
 
   res.redirect("/");
 });
