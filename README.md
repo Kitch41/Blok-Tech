@@ -80,21 +80,3 @@ I wanted to show you what setup i used for my visual studio code aswell,
 
 I used a MIT license since this one seemed most appropriate for the app i'm trying to make. and since its a school project i'm not concerned about people using my code for whatever purpose.
 
-### Resources
-
-Here are all the resources i used for this project:
-
-**Images**
-
-EJS Image in Readme
-https://blog.openreplay.com/serving-dynamic-html-using-embedded-javascript-ejs/
-
-
-**Resources on async / await**
-MDN. (2020, May 19). Making asynchronous programming easier with async and await.
-https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await
-
-**MongoDB Guide**
-
-Creating and using the MongoDB
-https://www.mongodb.com/docs/manual/tutorial/getting-started/
