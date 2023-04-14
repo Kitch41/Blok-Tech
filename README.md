@@ -71,11 +71,6 @@ as for linters i tried to use EJSLint for a while but nothing worked so i just w
 * [prettier](https://www.npmjs.com/package/prettier)
 
 
-### Setup
-
-I wanted to show you what setup i used for my visual studio code aswell,
-
-
 ### License
 
 I used a MIT license since this one seemed most appropriate for the app i'm trying to make. and since its a school project i'm not concerned about people using my code for whatever purpose.
