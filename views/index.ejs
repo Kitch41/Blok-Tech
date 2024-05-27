@@ -6,47 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile</title>
     <link href="./style.css" rel="stylesheet" type="text/css" />
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
   </head>
 
   <body class="index">
     <section class="wrapper">
       <%- include('./partials/nav.ejs'); %>
 
-      <!--main website section-->
       <section>
-        <h1>My Profile</h1>
+        <div>
+          <h1>My Profile</h1>
+          <a href="/edit/<%= datacollected[0].username %>"><img src="./icons/Edit-icon.svg" /></a>
+        </div>
 
-        <!--image, username, tag and edit button-->
         <section>
           <img src="./images/placeholder-photo.jpg" />
           <h1><%= datacollected[0].username %></h1>
           <p><%= datacollected[0].username %>#<%= datacollected[0].tag %></p>
-          <a href="/edit/<%= datacollected[0].username %>"><img src="./icons/Edit-icon.svg" /></a>
         </section>
 
-        <!--Overview, Info, Games-->
         <section>
           <ul>
-            <li>
-              <a href="#">Overview</a>
-            </li>
-            <li>
-              <a href="#">Info</a>
-            </li>
-            <li>
-              <a href="#">Games</a>
-            </li>
+            <li><a href="#" id="overviewButton" class="active">Overview</a></li>
+            <li><a href="#">Info</a></li>
+            <li><a href="#" id="gamesButton">Games</a></li>
           </ul>
 
           <hr />
 
-          <h2 id="steamusername">Steam Username: Not Connected</h2>
-          <h2>Level: 12</h2>
-          <p>Novice</p>
-          <progress max="100" value="50"></progress>
+          <div id="overviewContainer">
+            <h2 id="steamusername">Steam Username: Not Connected</h2>
+            <h2>Level: 12</h2>
+            <p>Novice</p>
+            <progress max="100" value="50"></progress>
+          </div>
 
-
+          <div id="gamesContainer" class="hidden">
+            <% games.forEach(game => { %>
+              <div class="game">
+                <img src="<%= game.coverUrl %>" alt="<%= game.name %> Cover" />
+                <div class="game-details">
+                  <h2><%= game.name %></h2>
+                  <p>Rating: <%= game.rating %></p>
+                  <p><%= game.summary.length > 200 ? game.summary.substring(0, 200) + '...' : game.summary %></p> 
+                </div>
+              </div>
+            <% }); %>
+          </div>
         </section>
       </section>
     </section>

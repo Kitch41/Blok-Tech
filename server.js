@@ -1,5 +1,5 @@
 const express = require("express");
-ejs = require("ejs");
+const ejs = require("ejs");
 require("dotenv").config();
 
 const app = express();
@@ -8,52 +8,14 @@ const port = 1337;
 app.set("view engine", "ejs");
 
 app.use(express.static("static"));
-
 app.use(express.urlencoded({ extended: true }));
 
-// mongo DB connect
-
 const { MongoClient } = require("mongodb");
-
 const uri = process.env.DB_STRING;
-
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
-// failed experiment V-------------------------------
-
-// async function run() {
-//   try {
-//     await client.connect()
-
-//     // database and collection code goes here
-
-//     // find code goes here
-//     await coll.find(
-//       {_id: "1"},
-//       {
-//         username: 1,
-//         _id: 0
-
-//       }).limit(1).toArray(function(err, datacollected) {
-//         console.log(datacollected)
-//       })
-
-//     // iterate code goes here
-//     // await result.forEach(console.log)
-
-//     // insert code here
-
-//   } finally {
-//     // await client.close();
-
-//   }
-// }
-// // run().catch(console.dir);
-
-//Home Get
 
 app.get("/", async (req, res) => {
   try {
@@ -64,23 +26,13 @@ app.get("/", async (req, res) => {
     const db = client.db("User1");
     const coll = db.collection("Data");
 
-    //-----in case of error-----
-
-    // coll.insertOne({
-    //   _id: '1',
-    //   username: 'Kitch',
-    //   tag: '3434',
-    //   firstname: 'Stef',
-    //   lastname: 'Keuken',
-    //   email: 'stefkeuken@hotmail.com',
-    //   age:'20'
-    // }
-    // );
-
     const datacollected = await coll.find({}).limit(1).toArray();
-    console.log("is the data collected?", datacollected);
+    const apiKey = process.env.IGDB_API_KEY;
+    const clientId = process.env.IGDB_CLIENT_ID;
+    
+    const games = await fetchGames(apiKey, clientId, 0, 10);
 
-    res.render("index.ejs", { datacollected: datacollected });
+    res.render("index.ejs", { datacollected: datacollected, games: games });
 
     client.close();
   } catch (error) {
@@ -89,20 +41,69 @@ app.get("/", async (req, res) => {
   }
 });
 
+async function fetchGames(apiKey, clientId, offset, limit) {
+  const gamesResponse = await fetch('https://api.igdb.com/v4/games', {
+    method: 'POST',
+    headers: {
+      'Client-ID': clientId,
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'text/plain'
+    },
+    body: `fields name,rating,cover,summary; sort rating desc; limit ${limit}; offset ${offset};`
+  });
+  const games = await gamesResponse.json();
+
+  const coverIds = games.map(game => game.cover).filter(id => id != null);
+
+  const coversResponse = await fetch('https://api.igdb.com/v4/covers', {
+    method: 'POST',
+    headers: {
+      'Client-ID': clientId,
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'text/plain'
+    },
+    body: `fields url; where id = (${coverIds.join(',')});`
+  });
+  const covers = await coversResponse.json();
+
+  const coverMap = covers.reduce((acc, cover) => {
+    acc[cover.id] = cover.url;
+    return acc;
+  }, {});
+
+  return games.map(game => {
+    if (game.cover) {
+      game.coverUrl = coverMap[game.cover];
+    }
+    return game;
+  });
+}
+
+app.get("/more-games", async (req, res) => {
+  const offset = parseInt(req.query.offset, 10) || 0;
+  const limit = parseInt(req.query.limit, 10) || 10;
+  const apiKey = process.env.IGDB_API_KEY;
+  const clientId = process.env.IGDB_CLIENT_ID;
+
+  try {
+    const games = await fetchGames(apiKey, clientId, offset, limit);
+    res.json(games);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error retrieving more games");
+  }
+});
+
 app.on("close", () => {
   client.close();
 });
 
-//profile edit get
-
+// Profile edit get
 app.get("/edit/:username", async (req, res) => {
-
-    res.render("edit.ejs")
-
+  res.render("edit.ejs");
 });
 
-// -----------------------------trial and error (mostly error) -----------------------------//
-
+// Trial and error (mostly error)
 app.post("/add-data", async (req, res) => {
   console.log("running postroute");
 
@@ -128,18 +129,15 @@ app.post("/add-data", async (req, res) => {
 
   console.log("Account aangemaakt voor", username);
 
-
   res.redirect("/");
 });
 
-//404 send
-
+// 404 send
 app.get("*", (req, res) => {
   res.send("error 404, page not found");
 });
 
-// listener
-
+// Listener
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });

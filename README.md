@@ -57,6 +57,12 @@ Dev dependencies
 * [prettier](https://www.npmjs.com/package/prettier)
 * [EJS-Lint](https://www.npmjs.com/package/ejs-lint)
 
+To start the server you can run:
+
+ npm run start
+ or
+ npm run dev
+
 ### Templating engine
 
 for templating engine i used EJS, 
@@ -64,16 +70,23 @@ first i started looking into what templating engine was the best and i was quick
 
 ![hero](https://user-images.githubusercontent.com/91873549/227153436-ebbbc917-1eeb-45bb-8e1c-76df60f02ed4.png)
 
+### Web Api
+
+For my project i use the webapi intersection observer. With this api i can load more images the further i scroll on a website. This way the initial load time of the website is lowered and it is more user friendly.
+
+This is how i used the api
+
+
+### Data Api
+
+For my Data api i wanted to go with a 
+
 ### Linter
 
 as for linters i tried to use EJSLint for a while but nothing worked so i just went with prettier to make my code look a lot better.
 
 * [prettier](https://www.npmjs.com/package/prettier)
 
-
-### Setup
-
-I wanted to show you what setup i used for my visual studio code aswell,
 
 
 ### License

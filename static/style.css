@@ -14,6 +14,15 @@
 body {
   background-image: url(./images/Background-pattern-blue.jpg);
   background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+body.long {
+  background-image: url(./images/Background-pattern-blue.jpg);
+  background-size: auto;
+  background-repeat: repeat;
+  height: 100vh;
 }
 
 /* Navbar */
@@ -116,16 +125,41 @@ body > section > section {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  margin-left: 9em;
+  margin-left: 9em; 
 }
 
-body > section > section > h1 {
+body > section > section > div > h1 {
   color: #f9b321;
   font-size: 2em;
+}
 
+body > section > section > div {
+  width: 90%;
+  height: 4em;
   background-color: var(--clr-mainbluedark);
-  padding: 1em 13em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 0 0 0.5em 0.5em;
+  position: relative;
+}
+
+body > section > section > div a {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
+}
+
+body > section > section > div a img {
+  height: 3em;
+
+  filter: invert(86%) sepia(26%) saturate(3552%) hue-rotate(340deg)
+    brightness(99%) contrast(97%);
+}
+
+body > section > section > div a img:hover {
+  filter: invert(100%) sepia(97%) saturate(18%) hue-rotate(325deg)
+    brightness(103%) contrast(100%);
 }
 
 /*------------ index Page -------------*/
@@ -148,7 +182,6 @@ body > section > section > h1 {
   display: flex;
   flex-direction: column;
   margin: 0;
-  position: relative;
 }
 
 .index > section > section > section:nth-of-type(1) img {
@@ -182,21 +215,6 @@ body > section > section > h1 {
   color: var(--clr-mainbutton);
 }
 
-.index > section > section > section:nth-of-type(1) a img {
-  position: fixed;
-  top: 0;
-  right: 13em;
-  height: 3em;
-  margin: 2em 2em 0 0;
-
-  filter: invert(86%) sepia(26%) saturate(3552%) hue-rotate(340deg)
-    brightness(99%) contrast(97%);
-}
-
-.index > section > section > section:nth-of-type(1) a img:hover {
-  filter: invert(100%) sepia(97%) saturate(18%) hue-rotate(325deg)
-    brightness(103%) contrast(100%);
-}
 
 /* Overview, Info, Games */
 
@@ -205,10 +223,10 @@ body > section > section > h1 {
   align-items: center;
   flex-direction: column;
   margin: 2em 0 0 0;
-  height: 20em;
+  padding: 1em 2em;
   background-color: var(--clr-mainbluedark);
   border-radius: 1em;
-  width: 60em;
+  width: 90%;
 }
 
 .index > section > section > section:nth-of-type(2) > ul {
@@ -233,6 +251,11 @@ body > section > section > h1 {
   padding: 0.5em 2em;
 }
 
+.index > section > section > section:nth-of-type(2) > ul > li > a.active {
+  background-color: var(--clr-mainbutton);
+  color: white;
+}
+
 .index > section > section > section:nth-of-type(2) > ul > li > a:hover {
   color: var(--clr-whitetext);
   background-color: var(--clr-mainbutton);
@@ -247,17 +270,17 @@ body > section > section > h1 {
   margin-top: 2em;
 }
 
-.index > section > section > section:nth-of-type(2) > h2 {
+#overviewContainer h2 {
   color: var(--clr-mainbutton);
   margin: 1em 0 0 0;
 }
 
-.index > section > section > section:nth-of-type(2) > p {
+#overviewContainer p{
   color: var(--clr-mainbutton);
   margin: 1em 0 0 0;
 }
 
-.index > section > section > section:nth-of-type(2) > progress {
+#overviewContainer progress {
   width: 80%;
   margin-top: 1em;
   border-radius: 10em;
@@ -280,6 +303,11 @@ body > section > section > h1 {
   background-image: none;
 }
 
+.edit section section h1 {
+  color: var(--clr-mainbutton);
+  font-size: 2em;
+}
+
 .edit section > section > img:nth-of-type(1) {
   height: 10em;
   width: auto;
@@ -288,7 +316,7 @@ body > section > section > h1 {
 
   position: absolute;
   top: 8em;
-  right: 15em;
+  right: 15vw;
 
   align-self: flex-end;
   display: flex;
@@ -297,7 +325,7 @@ body > section > section > h1 {
 
 .edit section > section > img:nth-of-type(2) {
   position: absolute;
-  right: 15em;
+  right: 15vw;
   top: 16em;
 
   background-color: grey;
@@ -317,7 +345,7 @@ body > section > section > h1 {
   margin: 2em 0 0 11em;
   column-gap: 1em;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 2em;
 }
@@ -398,4 +426,49 @@ body > section > section > h1 {
 .edit section > section > form > input:hover {
   background-color: var(--clr-mainbutton);
   color: var(--clr-whitetext);
+}
+
+
+.hidden {
+  display: none;
+}
+
+#gamesContainer{
+  margin-top: 1em;
+  position: relative;
+
+
+  p:nth-of-type(1) {
+    color: var(--clr-mainbutton);
+  }
+}
+
+#gamesContainer .game {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#gamesContainer .game img {
+  max-width: 100px;
+  margin-right: 20px;
+}
+
+#gamesContainer .game .game-details {
+  flex-grow: 1;
+}
+
+
+.game {
+  border: 1px solid var(--clr-mainbutton);
+  border-radius: 10px;
+  padding: 1em;
+  color: white;
+}
+
+#loadMoreTrigger {
+  position: relative;
+  bottom: 80em;
+  height: 100px;
+  width: 100px;
 }

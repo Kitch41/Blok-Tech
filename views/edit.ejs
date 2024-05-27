@@ -23,33 +23,32 @@
         <form name="editprofileform" method="POST"  action="/add-data">
           <label for="Username">
             Username
-            <input type="text" id="username" name="username" />
+            <input type="text" id="username" name="username" required />
           </label>
 
           <label for="Tag">
             Tag
-            <input type="number" id="tag" name="tag" max="9999" value="#" />
+            <input type="number" id="tag" name="tag" max="9999" value="#" required/>
           </label>
-          <br />
 
           <label for="Firstname">
             Firstname
-            <input type="text" id="firstname" name="firstname" />
+            <input type="text" id="firstname" name="firstname" required />
           </label>
 
           <label for="lastname">
             Lastname
-            <input type="text" id="lastname" name="lastname" />
+            <input type="text" id="lastname" name="lastname" required/>
           </label>
 
           <label for="email">
             E-mail
-            <input type="email" id="email" name="email" />
+            <input type="email" id="email" name="email" required/>
           </label>
 
           <label for="age">
             Age
-            <input type="number" id="age" name="age" max="120" />
+            <input type="number" id="age" name="age" max="120" required/>
           </label>
 
           <input type="submit" value="Save Profile Settings" />
